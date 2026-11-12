@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080e1b">
+  <meta name="description" content="Medusa IV, el cohete escolar de Blue Launch. Explora la bitácora, el despiece, el túnel de viento y el simulador de vuelo.">
+  <title>Blue Launch | Medusa IV</title>
+  <link rel="icon" type="image/webp" href="./assets/emblema.webp">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#contenido">Ir al contenido</a>
+  <canvas id="cielo" aria-hidden="true"></canvas>
+  <header class="header">
+    <div class="wrap bar">
+      <a class="brand" href="#inicio"><img src="./assets/emblema.webp" width="43" height="44" alt=""><span>BLUE <b>LAUNCH</b></span></a>
+      <nav aria-label="Navegación principal"><a href="#mision">Misión</a><a href="#despiece">Despiece</a><a href="#simulador">Simulador</a><a href="#tunel-viento">Túnel</a></nav>
+      <button class="sound" id="audio" type="button" aria-pressed="false"><span aria-hidden="true">◖))</span><span id="audio-label">Activar sonido</span></button>
+    </div>
+  </header>
+  <main id="contenido">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><i></i> ROCKET TEC SINALOA · MEDUSA IV</p>
+          <h1 id="hero-title">BLUE<br><span>LAUNCH</span></h1>
+          <p class="manifesto">Del azul de la noche a la chispa dorada que hace despegar nuestras ideas.</p>
+          <p class="hero-description">Un cohete escolar con motor y una pregunta que nos puso a trabajar: ¿cómo llevamos una idea del papel al cielo?</p>
+          <div class="actions"><a class="button primary" href="#simulador"><span class="arrow-up" aria-hidden="true">↑</span> Simular lanzamiento</a><a class="button ghost" href="#mision">Explorar la misión <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="hero-caption"><span></span> ILUSTRACIÓN DEL DESPEGUE</div>
+      </div>
+    </section>
+
+    <section class="wrap section mission-section" id="mision" aria-labelledby="mission-title">
+      <div class="mission-intro">
+        <div class="section-heading">
+          <p class="eyebrow"><i></i> RETO DE FÍSICA · F1025B.504</p>
+          <h2 id="mission-title">Misión <span>Medusa IV</span></h2>
+          <p>Diseñamos un cohete a escala para predecir cómo sube, cuándo alcanza su punto más alto y cómo regresa con el paracaídas. El reto es contrastar esa predicción con las mediciones del vuelo.</p>
+        </div>
+        <figure class="mission-emblem">
+          <img src="./assets/emblema.webp" width="500" height="500" alt="Emblema azul y dorado de Blue Launch con un satélite, montañas y un árbol de circuitos" loading="lazy">
+        </figure>
+      </div>
+      <h3 class="log-title">Bitácora de ingeniería</h3>
+      <ol class="flight-log">
+        <li><span>SEMANAS 1–4</span><h4>Estudiar el descenso</h4><p>Exploramos cómo el arrastre y el paracaídas afectan la velocidad de caída.</p></li>
+        <li><span>SEMANAS 5–6</span><h4>Diseñar el cohete</h4><p>La geometría y la curva de empuje del motor sirven como entradas para el modelo.</p></li>
+        <li><span>SEMANAS 7–8</span><h4>Predecir el vuelo</h4><p>Con MATLAB y OpenRocket se estima el ascenso y la altura máxima.</p></li>
+        <li><span>SEMANAS 9–10</span><h4>Contrastar los datos</h4><p>La prueba de vuelo y la recuperación del sensor permiten comparar la predicción con el experimento.</p></li>
+      </ol>
+    </section>
+
+    <section class="wrap section anatomy-section" id="proyecto" aria-labelledby="project-title">
+      <div class="section-heading project-intro">
+        <p class="eyebrow"><i></i> EL PROYECTO</p>
+        <h2 id="project-title">Cómo está hecho</h2>
+      </div>
+      <div class="anatomy" id="despiece">
+        <div class="anatomy-visual">
+          <div class="anatomy-bar">
+            <span id="anatomy-view" aria-live="polite">VISTA DESPIEZADA</span>
+            <button class="button reset" id="anatomy-toggle" type="button">Ver ensamblado</button>
+          </div>
+          <div class="rocket-diagram" role="group" aria-label="Diagrama interactivo del cohete">
+            <button class="rocket-piece piece-nose" data-part="ojiva" aria-label="Seleccionar ojiva" aria-pressed="true" type="button"><span></span></button>
+            <button class="rocket-piece piece-sensor" data-part="sensor" aria-label="Seleccionar sensor" aria-pressed="false" type="button"><span></span></button>
+            <button class="rocket-piece piece-canopy" data-part="paracaidas" aria-label="Seleccionar paracaídas" aria-pressed="false" type="button"><span></span></button>
+            <button class="rocket-piece piece-body" data-part="fuselaje" aria-label="Seleccionar fuselaje" aria-pressed="false" type="button"><span></span></button>
+            <button class="rocket-piece piece-motor" data-part="motor" aria-label="Seleccionar motor" aria-pressed="false" type="button"><span></span></button>
+            <button class="rocket-piece piece-fins" data-part="alerones" aria-label="Seleccionar alerones" aria-pressed="false" type="button"><span></span></button>
+          </div>
+          <p class="diagram-caption">Esquema ilustrativo</p>
+        </div>
+        <div class="anatomy-controls">
+          <p class="eyebrow"><i></i> DEL DISEÑO AL VUELO</p>
+          <h3>Despiece del cohete</h3>
+          <p>Selecciona una pieza para ver dónde va y qué hace durante el vuelo.</p>
+          <div class="part-keys" role="group" aria-label="Partes del cohete">
+            <button data-part="ojiva" aria-pressed="true" type="button">Ojiva</button>
+            <button data-part="sensor" aria-pressed="false" type="button">Sensor</button>
+            <button data-part="paracaidas" aria-pressed="false" type="button">Paracaídas</button>
+            <button data-part="fuselaje" aria-pressed="false" type="button">Fuselaje</button>
+            <button data-part="motor" aria-pressed="false" type="button">Motor</button>
+            <button data-part="alerones" aria-pressed="false" type="button">Alerones</button>
+          </div>
+          <div class="part-detail" aria-live="polite">
+            <span id="part-category">AERODINÁMICA</span>
+            <h4 id="part-name">Ojiva</h4>
+            <p id="part-description">Es la punta del cohete. Su perfil curvo ayuda a reducir la resistencia del aire durante el ascenso.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section sim-section" id="simulador" aria-labelledby="sim-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow"><i></i> SIMULADOR DE VUELO</p>
+          <h2 id="sim-title">Tu turno de lanzar</h2>
+          <p>Ajusta los parámetros y sigue el vuelo desde el encendido hasta la recuperación.</p>
+        </div>
+        <div class="console">
+          <form class="controls" id="controles">
+            <h3>Configuración</h3>
+            <div class="control"><label for="masa">Masa total <output id="masa-val" for="masa">100 g</output></label><input id="masa" name="masa" type="range" min="60" max="220" step="5" value="100"></div>
+            <div class="control"><label for="empuje">Empuje medio <output id="empuje-val" for="empuje">5.0 N</output></label><input id="empuje" name="empuje" type="range" min="2.5" max="8" step=".5" value="5"></div>
+            <div class="control"><label for="motor">Duración del empuje <output id="motor-val" for="motor">0.8 s</output></label><input id="motor" name="motor" type="range" min=".4" max="1.2" step=".1" value=".8"></div>
+            <div class="control"><label for="angulo">Inclinación desde la vertical <output id="angulo-val" for="angulo">10°</output></label><input id="angulo" name="angulo" type="range" min="0" max="25" step="1" value="10"></div>
+            <label class="check"><input id="paracaidas" name="paracaidas" type="checkbox" checked> Abrir paracaídas en el apogeo</label>
+            <div class="launch-buttons"><button class="button primary" id="lanzar" type="submit">Iniciar cuenta regresiva <span class="arrow-up" aria-hidden="true">↑</span></button><button class="button reset" id="reiniciar" type="button">Reiniciar</button></div>
+          </form>
+          <div class="flight">
+            <div class="flight-head"><span>TRAYECTORIA</span><span id="fase" role="status" aria-live="polite">En plataforma</span></div>
+            <div class="scene">
+              <canvas id="trayectoria" role="img" aria-label="Gráfica animada de altura y distancia horizontal del cohete">La telemetría se muestra debajo de la gráfica.</canvas>
+              <div id="cuenta" class="count" aria-hidden="true" hidden></div>
+            </div>
+            <div class="legend"><span>Con motor</span><span>Por inercia</span><span id="descenso-leyenda">Con paracaídas</span></div>
+            <div class="telemetry" aria-label="Telemetría simulada">
+              <div><span>ALTURA</span><strong id="altura">0.0 m</strong></div>
+              <div><span>VELOCIDAD</span><strong id="velocidad">0.0 m/s</strong></div>
+              <div><span>APOGEO</span><strong id="apogeo">—</strong></div>
+              <div><span>TIEMPO DE VUELO</span><strong id="tiempo">0.0 s</strong></div>
+            </div>
+          </div>
+        </div>
+        <p class="model-note">Modelo educativo con empuje constante, resistencia del aire y masa fija. Los valores de partida son ilustrativos. <a href="https://echucuan.github.io/rpl/#inicio" target="_blank" rel="noopener">Referencia: Rocket Physics Lab Sinaloa</a></p>
+      </div>
+    </section>
+
+    <section class="wrap section wind-section" id="tunel-viento" aria-labelledby="wind-title">
+      <div class="section-heading">
+        <p class="eyebrow"><i></i> LABORATORIO DE AERODINÁMICA</p>
+        <h2 id="wind-title">Túnel de viento</h2>
+        <p>Cambia la velocidad del aire y la inclinación del cohete frente al flujo. Prueba duplicar la velocidad y observa cómo cambia la presión dinámica.</p>
+      </div>
+      <div class="wind-console">
+        <div class="wind-visual">
+          <div class="flight-head"><span>FLUJO DE AIRE</span><span>VISTA LATERAL</span></div>
+          <div class="wind-stage"><canvas id="wind-canvas" role="img" aria-label="Esquema del aire que pasa de izquierda a derecha alrededor del cohete"></canvas></div>
+          <p class="diagram-caption">Visualización esquemática del flujo</p>
+        </div>
+        <div class="wind-controls">
+          <h3>Configura el flujo</h3>
+          <div class="control"><label for="wind-speed">Velocidad del aire <output id="wind-speed-value" for="wind-speed">20 m/s</output></label><input id="wind-speed" type="range" min="5" max="45" step="1" value="20"></div>
+          <div class="control"><label for="wind-angle">Ángulo de ataque <output id="wind-angle-value" for="wind-angle">0°</output></label><input id="wind-angle" type="range" min="-12" max="12" step="1" value="0"></div>
+          <div class="wind-reading"><span>PRESIÓN DINÁMICA</span><output id="wind-pressure" for="wind-speed">245 Pa</output><small>q = ½ ρv² · ρ = 1.225 kg/m³</small></div>
+          <p class="model-note">La presión dinámica depende de la velocidad y la densidad del aire. Las líneas ilustran cómo cambia el flujo al inclinar el cohete.</p>
+        </div>
+      </div>
+      <p class="model-note"><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/bernoullis-equation/" target="_blank" rel="noopener">Presión dinámica en NASA Glenn</a></p>
+    </section>
+
+    <section class="wrap section explore" id="explora" aria-labelledby="explore-title">
+      <div class="section-heading">
+        <p class="eyebrow"><i></i> COHETERÍA ESCOLAR</p>
+        <h2 id="explore-title">La física del vuelo</h2>
+        <p>Pasa el cursor, enfoca o toca cada tarjeta para descubrir qué ocurre.</p>
+      </div>
+      <div class="facts-grid">
+        <article class="fact"><button aria-expanded="false" aria-controls="dato-motor"><span class="fact-icon" aria-hidden="true">↑</span><span><small>PROPULSIÓN</small><strong>Motor</strong></span><span class="plus" aria-hidden="true">+</span></button><div class="reveal" id="dato-motor"><p>El motor expulsa gases hacia abajo y empuja el cohete hacia arriba. Cuando se agota el combustible, el cohete sigue subiendo un poco por inercia.</p></div></article>
+        <article class="fact"><button aria-expanded="false" aria-controls="dato-aletas"><span class="fact-icon" aria-hidden="true">▲</span><span><small>ESTABILIDAD</small><strong>Alerones</strong></span><span class="plus" aria-hidden="true">+</span></button><div class="reveal" id="dato-aletas"><p>El aire actúa sobre los alerones de la parte trasera. Si el cohete se inclina, esa fuerza ayuda a que vuelva a apuntar en la dirección del vuelo.</p></div></article>
+        <article class="fact"><button aria-expanded="false" aria-controls="dato-apogeo"><span class="fact-icon" aria-hidden="true">✧</span><span><small>ALTURA MÁXIMA</small><strong>Apogeo</strong></span><span class="plus" aria-hidden="true">+</span></button><div class="reveal" id="dato-apogeo"><p>Es el punto más alto del vuelo. Por un instante la velocidad vertical es cero, aunque el cohete aún puede desplazarse hacia un lado.</p></div></article>
+        <article class="fact"><button aria-expanded="false" aria-controls="dato-paracaidas"><span class="fact-icon" aria-hidden="true">∩</span><span><small>RECUPERACIÓN</small><strong>Paracaídas</strong></span><span class="plus" aria-hidden="true">+</span></button><div class="reveal" id="dato-paracaidas"><p>Al abrirse aumenta la resistencia del aire y reduce la velocidad de caída. Compara la velocidad de aterrizaje con y sin paracaídas en el simulador.</p></div></article>
+      </div>
+      <div class="sky-note">
+        <div class="jelly" aria-hidden="true"><span></span><i></i><i></i><i></i></div>
+        <details class="space-fact">
+          <summary>¿Qué es una medusa espacial?</summary>
+          <p>Cerca del amanecer o del atardecer, el Sol puede iluminar la estela de un cohete mientras en tierra todavía está oscuro. Desde abajo parece una medusa brillante. <a href="https://science.nasa.gov/image-article/apod-2026-march-19-launch-plume-spacex-jellyfish/" target="_blank" rel="noopener">Ver foto en NASA</a></p>
+        </details>
+        <div class="jelly jelly-far" aria-hidden="true"><span></span><i></i><i></i><i></i></div>
+      </div>
+      <p class="model-note"><a href="https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/flight-of-a-model-rocket/" target="_blank" rel="noopener">Más sobre el vuelo de un cohete a escala en NASA Glenn</a></p>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap closing-inner">
+        <div><p class="eyebrow"><i></i> BLUE LAUNCH</p><h2 id="closing-title">El futuro no se espera.<br><span>Se lanza.</span></h2></div>
+        <button class="button primary" id="quick-launch" type="button"><span class="arrow-up" aria-hidden="true">↑</span> Iniciar secuencia de despegue</button>
+      </div>
+    </section>
+  </main>
+  <footer><div class="wrap"><a class="brand" href="#inicio"><img src="./assets/emblema.webp" width="36" height="37" alt=""><span>BLUE <b>LAUNCH</b></span></a><p>Rocket Tec Sinaloa 2026 · Tecnológico de Monterrey</p><a href="#inicio">Volver arriba ↑</a></div></footer>
+</body>
+</html>
